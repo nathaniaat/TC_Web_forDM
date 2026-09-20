@@ -36,7 +36,14 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
+
+        :root {
+            --deep-green: #1A3F22;
+            --olive: #58761B;
+            --amber: #D99201;
+            --bronze: #905A01;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -44,12 +51,12 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         }
 
         body {
-            background: #0a0c0f;
-            background-image: radial-gradient(circle at 30% 20%, rgba(45, 55, 72, 0.3) 0%, transparent 30%),
-                              radial-gradient(circle at 80% 70%, rgba(30, 41, 59, 0.4) 0%, transparent 35%);
+            background: #081208;
+            background-image: radial-gradient(circle at 30% 20%, rgba(26, 63, 34, 0.55) 0%, transparent 35%),
+                              radial-gradient(circle at 80% 70%, rgba(88, 118, 27, 0.35) 0%, transparent 40%);
             min-height: 100vh;
             font-family: 'Inter', sans-serif;
-            color: #e2e8f0;
+            color: #e8ecdf;
             padding: 24px;
             position: relative;
         }
@@ -59,7 +66,7 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
             width: 400px;
             height: 400px;
             border-radius: 50%;
-            background: rgba(65, 105, 225, 0.15);
+            background: rgba(217, 146, 1, 0.15);
             filter: blur(80px);
             z-index: 0;
             pointer-events: none;
@@ -68,13 +75,13 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         .orb-1 {
             top: -150px;
             right: -100px;
-            background: rgba(0, 180, 216, 0.12);
+            background: rgba(217, 146, 1, 0.15);
         }
 
         .orb-2 {
             bottom: -150px;
             left: -100px;
-            background: rgba(138, 43, 226, 0.1);
+            background: rgba(88, 118, 27, 0.2);
             width: 500px;
             height: 500px;
         }
@@ -108,12 +115,12 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
             background: rgba(255, 255, 255, 0.03);
             padding: 8px 20px;
             border-radius: 100px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(217, 146, 1, 0.15);
             backdrop-filter: blur(10px);
         }
 
         .logo span {
-            color: #7aa2f7;
+            color: #D99201;
             font-weight: 300;
             margin-left: 4px;
         }
@@ -121,12 +128,12 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         .date-badge {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(217, 146, 1, 0.15);
             padding: 8px 24px;
             border-radius: 100px;
             font-size: 0.9rem;
             font-weight: 300;
-            color: #a0aec0;
+            color: #c7cfb8;
         }
 
         .hero h1 {
@@ -139,7 +146,7 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         }
 
         .hero h1 span {
-            color: #7aa2f7;
+            color: #D99201;
             font-weight: 300;
         }
 
@@ -150,10 +157,10 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         }
 
         .glass-card {
-            background: rgba(18, 22, 28, 0.6);
+            background: rgba(10, 22, 12, 0.65);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(122, 162, 247, 0.15);
+            border: 1px solid rgba(217, 146, 1, 0.18);
             border-radius: 32px;
             padding: 32px;
             margin-bottom: 32px;
@@ -171,13 +178,13 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         .card-icon {
             width: 48px;
             height: 48px;
-            background: rgba(122, 162, 247, 0.1);
+            background: rgba(217, 146, 1, 0.12);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            border: 1px solid rgba(122, 162, 247, 0.2);
+            border: 1px solid rgba(217, 146, 1, 0.25);
         }
 
         .card-header h2 {
@@ -190,9 +197,9 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         .card-header h2 span {
             font-size: 1rem;
             font-weight: 300;
-            color: #7aa2f7;
+            color: #D99201;
             margin-left: 12px;
-            background: rgba(122, 162, 247, 0.1);
+            background: rgba(217, 146, 1, 0.12);
             padding: 4px 12px;
             border-radius: 40px;
         }
@@ -204,8 +211,8 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         }
 
         .counter-item {
-            background: rgba(10, 14, 20, 0.5);
-            border: 1px solid rgba(122, 162, 247, 0.1);
+            background: rgba(6, 16, 8, 0.55);
+            border: 1px solid rgba(88, 118, 27, 0.35);
             border-radius: 24px;
             padding: 24px;
             transition: all 0.2s ease;
@@ -215,7 +222,7 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: #7aa2f7;
+            color: #9CB552;
             margin-bottom: 12px;
             font-weight: 400;
         }
@@ -244,9 +251,9 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
             width: 48px;
             height: 48px;
             border-radius: 16px;
-            border: 1px solid rgba(122, 162, 247, 0.2);
-            background: rgba(10, 14, 20, 0.6);
-            color: #e2e8f0;
+            border: 1px solid rgba(217, 146, 1, 0.3);
+            background: rgba(6, 16, 8, 0.6);
+            color: #e8ecdf;
             font-size: 1.5rem;
             font-weight: 300;
             cursor: pointer;
@@ -258,14 +265,15 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         }
 
         .btn-counter:hover {
-            background: rgba(122, 162, 247, 0.2);
-            border-color: rgba(122, 162, 247, 0.4);
+            background: rgba(217, 146, 1, 0.25);
+            border-color: #D99201;
             color: white;
             transform: scale(0.98);
         }
 
         .btn-counter:active {
             transform: scale(0.95);
+            background: rgba(144, 90, 1, 0.4);
         }
 
         .btn-counter.loading {
@@ -281,15 +289,19 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         }
 
         .altar-card {
-            background: rgba(10, 14, 20, 0.4);
+            background: rgba(6, 16, 8, 0.45);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(122, 162, 247, 0.12);
+            border: 1px solid rgba(88, 118, 27, 0.3);
             border-radius: 28px;
             padding: 28px;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             gap: 20px;
+        }
+
+        .altar-card:hover {
+            border-color: rgba(217, 146, 1, 0.4);
         }
 
         .altar-header {
@@ -308,7 +320,7 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         .altar-value {
             font-size: 2.8rem;
             font-weight: 300;
-            color: #7aa2f7;
+            color: #D99201;
             line-height: 1;
             text-align: center;
             padding: 10px 0;
@@ -330,7 +342,7 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         .add-altar-section {
             margin-top: 40px;
             padding-top: 32px;
-            border-top: 1px solid rgba(122, 162, 247, 0.15);
+            border-top: 1px solid rgba(217, 146, 1, 0.18);
         }
 
         .add-altar-form {
@@ -343,8 +355,8 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
             flex: 1;
             min-width: 280px;
             padding: 18px 24px;
-            background: rgba(10, 14, 20, 0.6);
-            border: 1px solid rgba(122, 162, 247, 0.15);
+            background: rgba(6, 16, 8, 0.6);
+            border: 1px solid rgba(88, 118, 27, 0.3);
             border-radius: 24px;
             font-size: 1rem;
             color: white;
@@ -352,15 +364,15 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
 
         .input-altar:focus {
             outline: none;
-            border-color: #7aa2f7;
+            border-color: #D99201;
         }
 
         .btn-primary {
             padding: 18px 36px;
-            background: rgba(122, 162, 247, 0.1);
-            border: 1px solid rgba(122, 162, 247, 0.3);
+            background: rgba(217, 146, 1, 0.15);
+            border: 1px solid rgba(217, 146, 1, 0.4);
             border-radius: 24px;
-            color: #7aa2f7;
+            color: #F2B33D;
             font-size: 0.95rem;
             font-weight: 500;
             letter-spacing: 0.02em;
@@ -370,8 +382,8 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         }
 
         .btn-primary:hover {
-            background: rgba(122, 162, 247, 0.2);
-            border-color: #7aa2f7;
+            background: rgba(217, 146, 1, 0.3);
+            border-color: #D99201;
             color: white;
         }
 
@@ -383,9 +395,9 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
         .empty-names {
             text-align: center;
             padding: 60px;
-            color: #5a6a7a;
+            color: #6a7a5a;
             font-weight: 300;
-            border: 1px dashed rgba(122, 162, 247, 0.2);
+            border: 1px dashed rgba(88, 118, 27, 0.3);
             border-radius: 32px;
             background: rgba(0, 0, 0, 0.2);
         }
@@ -394,9 +406,9 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: rgba(122, 162, 247, 0.2);
+            background: rgba(144, 90, 1, 0.9);
             backdrop-filter: blur(10px);
-            border: 1px solid #7aa2f7;
+            border: 1px solid #D99201;
             color: white;
             padding: 12px 24px;
             border-radius: 50px;
@@ -420,10 +432,10 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
             text-align: center;
             margin-top: 80px;
             padding: 32px 0;
-            color: #4a5a6a;
+            color: #5a6a4a;
             font-size: 0.9rem;
             letter-spacing: 0.1em;
-            border-top: 1px solid rgba(122, 162, 247, 0.1);
+            border-top: 1px solid rgba(88, 118, 27, 0.2);
         }
 
         @media (max-width: 768px) {
@@ -462,7 +474,7 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
                 </div>
             </div>
             <div class="hero">
-                <h1>Connecting Coach <span>Nipon</span></h1>
+                <h1>KKR CG <span>Coach Nipon</span></h1>
             </div>
         </div>
 
@@ -576,7 +588,7 @@ $altar_calls = $conn->query("SELECT * FROM altar_calls WHERE event_id = 1 ORDER 
                         
                         // Fixed notification text
                         let actionText = action === 'plus' ? 'ditambah' : 'dikurangi';
-                        let typeText = type === 'hadir' ? 'Hadir' : 'Hadir (Akhir)';
+                        let typeText = type === 'hadir' ? 'TC' : 'SC';
                         showToast(typeText + ' ' + actionText);
                     }
                 },
